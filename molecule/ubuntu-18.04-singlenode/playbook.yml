@@ -44,6 +44,30 @@
     - role: ceph-mds
     - role: ceph-rgw
 
+  post_tasks:
+    - name: ceph-volume lvm create
+      shell: |
+        set -o pipefail
+        ceph-volume lvm create \
+          --bluestore \
+          --data /dev/sdc
+      args:
+        executable: "/bin/bash"
+      changed_when: false
+      ignore_errors: true
+
+    - name: ceph osd pool create rbd
+      shell: |
+        set -o pipefail
+        ceph osd pool create rbd 8 8
+        ceph osd pool set rbd size 1
+        ceph osd pool set rbd min_size 1
+      args:
+        executable: "/bin/bash"
+      when: ansible_hostname == ansible_play_hosts[0]
+      changed_when: false
+      ignore_errors: true
+
 - hosts: kube-master
   remote_user: root
   become: true
@@ -74,3 +98,20 @@
       command: kubectl version
       register: result
       changed_when: result is not succeeded
+
+    - name: create pvc
+      k8s:
+        state: "present"
+        definition:
+          apiVersion: v1
+          kind: PersistentVolumeClaim
+          metadata:
+            name: rbd
+            namespace: default
+          spec:
+            storageClassName: rbd
+            accessModes:
+              - ReadWriteOnce
+            resources:
+              requests:
+                storage: 100Mi

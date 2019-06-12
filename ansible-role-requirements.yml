@@ -26,6 +26,22 @@
   src: https://github.com/alvistack/ansible-role-ceph-mon
   version: develop
 
+- name: ceph-mgr
+  src: https://github.com/alvistack/ansible-role-ceph-mgr
+  version: develop
+
+- name: ceph-osd
+  src: https://github.com/alvistack/ansible-role-ceph-osd
+  version: develop
+
+- name: ceph-mds
+  src: https://github.com/alvistack/ansible-role-ceph-mds
+  version: develop
+
+- name: ceph-rgw
+  src: https://github.com/alvistack/ansible-role-ceph-rgw
+  version: develop
+
 - name: docker
   src: https://github.com/alvistack/ansible-role-docker
   version: develop

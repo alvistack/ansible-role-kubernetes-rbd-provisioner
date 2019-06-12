@@ -142,7 +142,9 @@ parameters:
   userId: {{ rbd_provisioner_admin_id }}
   userSecretName: client-admin
   userSecretNamespace: rbd-provisioner
-  deterministicNames: "{{ rbd_provisioner_deterministic_names | bool | lower }}"
+  imageFormat: "2"
+  imageFeatures: layering
+#  deterministicNames: "{{ rbd_provisioner_deterministic_names | bool | lower }}"
 
 ---
 apiVersion: v1
