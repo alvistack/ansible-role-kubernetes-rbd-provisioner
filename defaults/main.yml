@@ -1,0 +1,36 @@
+---
+
+# (c) Wong Hoi Sing Edison <hswong3i@pantarei-design.com>
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# rbd-provisioner version.
+rbd_provisioner_version: "v2.1.1-k8s1.11"
+
+# ImageRepository sets the container registry to pull images from.
+rbd_provisioner_image_repository: "quay.io/external_storage"
+
+# Ceph pool name.
+rbd_provisioner_pool: "rbd_data"
+
+# Ceph monitors.
+rbd_provisioner_monitors: ~
+
+# Ceph admin id.
+rbd_provisioner_admin_id: "admin"
+
+# Ceph admin secret.
+rbd_provisioner_admin_secret: ~
+
+# Create RBD image in deterministic name, or random with UUID.
+rbd_provisioner_deterministic_names: true
