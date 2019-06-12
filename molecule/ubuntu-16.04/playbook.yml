@@ -39,6 +39,10 @@
         {{ hostvars[host]['ansible_default_ipv4']['address'] }},
         {%- endfor -%}
     - role: ceph-mon
+    - role: ceph-mgr
+    - role: ceph-osd
+    - role: ceph-mds
+    - role: ceph-rgw
 
 - hosts: kube-master
   remote_user: root
