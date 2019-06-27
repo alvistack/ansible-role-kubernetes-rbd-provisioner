@@ -133,18 +133,10 @@ metadata:
     app.kubernetes.io/part-of: rbd-provisioner
     addonmanager.kubernetes.io/mode: Reconcile
 provisioner: ceph.com/rbd
+{% if rbd_provisioner_parameters %}
 parameters:
-  pool: {{ rbd_provisioner_pool }}
-  monitors: {{ rbd_provisioner_monitors }}
-  adminId: {{ rbd_provisioner_admin_id }}
-  adminSecretName: client-admin
-  adminSecretNamespace: rbd-provisioner
-  userId: {{ rbd_provisioner_admin_id }}
-  userSecretName: client-admin
-  userSecretNamespace: rbd-provisioner
-  imageFormat: "2"
-  imageFeatures: layering
-#  deterministicNames: "{{ rbd_provisioner_deterministic_names | bool | lower }}"
+  {{ rbd_provisioner_parameters | to_nice_yaml(indent=2) | indent(2) }}
+{%- endif %}
 
 ---
 apiVersion: v1
