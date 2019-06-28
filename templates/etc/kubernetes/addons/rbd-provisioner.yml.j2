@@ -25,6 +25,20 @@ metadata:
 
 ---
 apiVersion: v1
+kind: Secret
+metadata:
+  name: rbd-provisioner-secret
+  namespace: rbd-provisioner
+  labels:
+    app.kubernetes.io/name: rbd-provisioner
+    app.kubernetes.io/part-of: rbd-provisioner
+    addonmanager.kubernetes.io/mode: Reconcile
+type: Opaque
+data:
+  secret: {{ rbd_provisioner_admin_secret | b64encode }}
+
+---
+apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: rbd-provisioner
@@ -139,20 +153,6 @@ parameters:
 {%- endif %}
 
 ---
-apiVersion: v1
-kind: Secret
-metadata:
-  name: client-admin
-  namespace: rbd-provisioner
-  labels:
-    app.kubernetes.io/name: rbd-provisioner
-    app.kubernetes.io/part-of: rbd-provisioner
-    addonmanager.kubernetes.io/mode: Reconcile
-type: Opaque
-data:
-  secret: {{ rbd_provisioner_admin_secret | b64encode }}
-
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -184,6 +184,6 @@ spec:
             - name: PROVISIONER_NAME
               value: ceph.com/rbd
           command:
-            - "/usr/local/bin/rbd-provisioner"
+            - /usr/local/bin/rbd-provisioner
           args:
-            - "-id=rbd-provisioner-1"
+            - -id=rbd-provisioner-1

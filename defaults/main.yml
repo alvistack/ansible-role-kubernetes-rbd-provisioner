@@ -33,10 +33,10 @@ rbd_provisioner_admin_secret: ~
 rbd_provisioner_parameters:
   monitors: "{{ rbd_provisioner_monitors }}"
   adminId: "{{ rbd_provisioner_admin_id }}"
-  adminSecretName: "client-admin"
+  adminSecretName: "rbd-provisioner-secret"
   adminSecretNamespace: "rbd-provisioner"
   userId: "{{ rbd_provisioner_admin_id }}"
-  userSecretName: "client-admin"
+  userSecretName: "rbd-provisioner-secret"
   userSecretNamespace: "rbd-provisioner"
   imageFormat: "2"
   imageFeatures: "layering"
