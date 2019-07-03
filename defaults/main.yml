@@ -20,9 +20,6 @@ rbd_provisioner_version: "v2.1.1-k8s1.11"
 # ImageRepository sets the container registry to pull images from.
 rbd_provisioner_image_repository: "quay.io/external_storage"
 
-# Ceph pool name.
-rbd_provisioner_pool: "rbd"
-
 # Ceph monitors.
 rbd_provisioner_monitors: ~
 
@@ -32,5 +29,14 @@ rbd_provisioner_admin_id: "admin"
 # Ceph admin secret.
 rbd_provisioner_admin_secret: ~
 
-# Create RBD image in deterministic name, or random with UUID.
-rbd_provisioner_deterministic_names: true
+# StorageClass parameters.
+rbd_provisioner_parameters:
+  monitors: "{{ rbd_provisioner_monitors }}"
+  adminId: "{{ rbd_provisioner_admin_id }}"
+  adminSecretName: "rbd-provisioner-secret"
+  adminSecretNamespace: "rbd-provisioner"
+  userId: "{{ rbd_provisioner_admin_id }}"
+  userSecretName: "rbd-provisioner-secret"
+  userSecretNamespace: "rbd-provisioner"
+  imageFormat: "2"
+  imageFeatures: "layering"
