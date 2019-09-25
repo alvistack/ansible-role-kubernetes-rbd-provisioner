@@ -80,14 +80,3 @@
   loop:
     - { dest: "/etc/kubernetes/addons/rbd-provisioner.yml" }
   tags: kubernetes_rbd_provisioner
-
-- name: apply manifests
-  vars:
-    ansible_python_interpreter: "/usr/bin/python3"
-  k8s:
-    src: "{{ item.src }}"
-    state: "{{ item.state }}"
-  loop:
-    - { state: "present", src: "/etc/kubernetes/addons/rbd-provisioner.yml" }
-  when: ansible_hostname == ansible_play_hosts[0]
-  tags: kubernetes_rbd_provisioner
