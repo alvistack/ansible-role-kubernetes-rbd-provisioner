@@ -162,3 +162,4 @@
       when: ansible_hostname == groups['kube-master'][0]
       register: result
       until: result is succeeded
+      retries: 15
