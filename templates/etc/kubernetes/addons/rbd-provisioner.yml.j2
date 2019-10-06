@@ -150,7 +150,7 @@ provisioner: ceph.com/rbd
 {% if rbd_provisioner_parameters %}
 parameters:
   {{ rbd_provisioner_parameters | to_nice_yaml(indent=2) | indent(2) }}
-{%- endif %}
+{% endif %}
 
 ---
 apiVersion: apps/v1
