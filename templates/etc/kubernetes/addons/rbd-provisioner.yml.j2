@@ -71,7 +71,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: rbd-provisioner
-  namespace: rbd-provisioner
   labels:
     app.kubernetes.io/name: rbd-provisioner
     app.kubernetes.io/part-of: rbd-provisioner
@@ -79,32 +78,26 @@ metadata:
 rules:
   - apiGroups: [""]
     resources: ["persistentvolumes"]
-    verbs: ["get", "list", "watch", "patch", "update", "create", "delete"]
+    verbs: ["get", "list", "watch", "create", "delete"]
   - apiGroups: [""]
     resources: ["persistentvolumeclaims"]
-    verbs: ["get", "list", "watch", "patch", "update"]
+    verbs: ["get", "list", "watch", "update"]
   - apiGroups: ["storage.k8s.io"]
     resources: ["storageclasses"]
     verbs: ["get", "list", "watch"]
   - apiGroups: [""]
-    resources: ["nodes"]
-    verbs: ["get", "list", "watch"]
-  - apiGroups: [""]
-    resources: ["pods"]
-    verbs: ["get", "list", "watch", "patch", "update", "create", "delete"]
-  - apiGroups: [""]
     resources: ["events"]
-    verbs: ["get", "list", "watch", "patch", "update", "create"]
-  - apiGroups: [""]
-    resources: ["endpoints"]
-    verbs: ["get", "list", "watch", "patch", "update", "create"]
-  - apiGroups: [""]
-    resources: ["secrets"]
-    verbs: ["get", "list", "watch", "patch", "update", "create", "delete"]
+    verbs: ["create", "update", "patch"]
   - apiGroups: [""]
     resources: ["services"]
     resourceNames: ["kube-dns","coredns"]
-    verbs: ["get", "list", "watch"]
+    verbs: ["list", "get"]
+  - apiGroups: [""]
+    resources: ["endpoints"]
+    verbs: ["get", "list", "watch", "create", "update", "patch"]
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["get", "create", "delete"]
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
