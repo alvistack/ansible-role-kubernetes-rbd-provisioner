@@ -54,6 +54,7 @@
 
   roles:
     - role: kubernetes_rbd_provisioner
+      rbd_provisioner_admin_secret: "{{ ceph_client_admin_result.stdout }}"
 
   post_tasks:
     - name: setup rbd as default storageclass

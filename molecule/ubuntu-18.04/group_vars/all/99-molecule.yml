@@ -37,4 +37,3 @@ rbd_provisioner_monitors: >-
   {%- for host in groups['all'] -%}
   {{ hostvars[host].ansible_eth1.ipv4.address }}:6789,
   {%- endfor -%}
-rbd_provisioner_admin_secret: "{{ ceph_client_admin_result.stdout }}"
