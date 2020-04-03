@@ -1,6 +1,6 @@
 # Ansible Role for RBD Volume Provisioner on Kubernetes
 
-[![Travis](https://img.shields.io/travis/alvistack/ansible-role-kubernetes_rbd_provisioner.svg)](https://travis-ci.org/alvistack/ansible-role-kubernetes_rbd_provisioner)
+[![Travis](https://img.shields.io/travis/com/alvistack/ansible-role-kubernetes_rbd_provisioner.svg)](https://travis-ci.com/alvistack/ansible-role-kubernetes_rbd_provisioner)
 [![GitHub release](https://img.shields.io/github/release/alvistack/ansible-role-kubernetes_rbd_provisioner.svg)](https://github.com/alvistack/ansible-role-kubernetes_rbd_provisioner)
 [![GitHub license](https://img.shields.io/github/license/alvistack/ansible-role-kubernetes_rbd_provisioner.svg)](https://github.com/alvistack/ansible-role-kubernetes_rbd_provisioner/blob/master/LICENSE)
 [![Ansible Role](https://img.shields.io/badge/galaxy-alvistack.kubernetes_rbd_provisioner-blue.svg)](https://galaxy.ansible.com/alvistack/kubernetes_rbd_provisioner)
