@@ -1,9 +1,10 @@
 # Ansible Role for RBD Volume Provisioner on Kubernetes
 
-## 4.3.0 - TBC
+## 4.2.7 - 2020-04-04
 
 ### Major Changes
 
+  - [DEPRECATED] No longer recommended for Kubernetes 1.16+, use csi-rbd instead
   - Upgrade minimal Molecule support to 3.0.2
   - Migrate role name to lowercase or underline
   - Migrate group name to lowercase or underline
